@@ -2,10 +2,7 @@
 
 ofxLuaaa::ofxLuaaa(){}
 
-ofxLuaaa::~ofxLuaaa() {
-	clearLua();
-	lua_close(L);
-}
+ofxLuaaa::~ofxLuaaa() {}
 
 
 void ofxLuaaa::runScript(lua_State* ls, const std::string& script) {
@@ -46,15 +43,14 @@ void ofxLuaaa::fnDraw(lua_State* ls) {
 void ofxLuaaa::fnExit(lua_State* ls) {
 	if (ls == NULL) {return;}
 	lua_getglobal(ls, "exit");
-	lua_gc(ls, LUA_GCCOLLECT, 0);
+	//lua_gc(ls, LUA_GCCOLLECT, 0);
 	if (lua_pcall(ls, 0, 0, 0) != 0) {
 		ofLog() << "error running exit function";
 	}
 }
 
 void ofxLuaaa::clearLua(lua_State* ls) {
-	if (L != NULL) {
-		L = NULL;
+	if (ls != NULL) {
 		lua_gc(ls, LUA_GCCOLLECT, 0);
 	}
 }

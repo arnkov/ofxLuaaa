@@ -15,5 +15,5 @@ public:
 	void fnUpdate(lua_State* ls);
 	void fnDraw(lua_State* ls);
 	void fnExit(lua_State* ls);
-	void clearLua(lua_state* ls);
+	void clearLua(lua_State* ls);
 };
